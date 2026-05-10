@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investigation</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ffd6e7,#7b1e3a);
+    font-family:Arial,sans-serif;
+    overflow:hidden;
+    color:#4a1025;
+}
+
+.container{
+    width:90%;
+    max-width:370px;
+    background:white;
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    position:relative;
+    animation:fadeIn 0.5s ease;
+}
+
+h1{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+p{
+    line-height:1.6;
+    font-size:16px;
+}
+
+button{
+    padding:13px 22px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+    margin-top:15px;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.yesBtn{
+    background:#7b1e3a;
+    color:white;
+    position:absolute;
+}
+
+.noBtn{
+    background:#ff8eb5;
+    color:white;
+}
+
+.progress{
+    width:100%;
+    height:10px;
+    background:#f5d1de;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:20px;
+}
+
+.bar{
+    width:0%;
+    height:100%;
+    background:#7b1e3a;
+    transition:1s;
+}
+
+.small{
+    font-size:12px;
+    opacity:0.7;
+    margin-top:15px;
+}
+
+.heart{
+    position:absolute;
+    color:#ff8eb5;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+.floatText{
+    position:absolute;
+    color:#ff4d88;
+    font-size:14px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh);opacity:1;}
+    to{transform:translateY(-120vh);opacity:0;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+
+<h1>INTERROGATION STARTED 🚨</h1>
+
+<p>Do you genuinely think I hate you?</p>
+
+<button class="yesBtn" id="yesBtn">Yes 😔</button>
+<button class="noBtn" onclick="beginJourney()">No 😌</button>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<p class="small">Emotional investigation loading...</p>
+
+</div>
+
+<script>
+
+/* ================= FLOATING HEARTS ================= */
+
+function createHearts(){
+const h=document.createElement("div");
+h.classList.add("heart");
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*20)+"px";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),6000);
+}
+setInterval(createHearts,900);
+
+/* ================= FLOATING CHAOS TEXT ================= */
+
+function floatText(){
+const t=document.createElement("div");
+t.className="floatText";
+t.innerText=["dramatic.","sus.","hmm.","attention detected.","interesting."][Math.floor(Math.random()*5)];
+t.style.left=Math.random()*100+"vw";
+document.body.appendChild(t);
+setTimeout(()=>t.remove(),6000);
+}
+setInterval(floatText,1500);
+
+/* ================= RUNAWAY YES BUTTON ================= */
+
+const yesBtn=document.getElementById("yesBtn");
+yesBtn.style.left="40px";
+yesBtn.style.top="220px";
+
+function moveYes(){
+yesBtn.style.left=Math.random()*220+"px";
+yesBtn.style.top=Math.random()*140+"px";
+}
+
+yesBtn.addEventListener("mouseover",moveYes);
+yesBtn.addEventListener("touchstart",(e)=>{e.preventDefault();moveYes();});
+
+/* ================= FLOW ================= */
+
+function beginJourney(){
+
+document.getElementById("main").innerHTML=`
+<h1>Answer accepted ✅</h1>
+<p>Scanning emotional history...</p>
+<div class="progress"><div class="bar" style="width:20%"></div></div>
+<p class="small"> please wait which your weird ass question is being analysed. </p>
+`;
+
+setTimeout(stage2,4000);
+}
+
+function stage2(){
+document.getElementById("main").innerHTML=`
+<h1> checking messages</h1>
+<p> looking for signs of hatred...</p>
+    <div class="progress"> <div class="bar" style="width:35%"></div>
+      </div>
+<p class="small">
+    so far youre looking dramatic.
+    </p>
+
+<h2>Lie Detector 💓</h2>
+<p>Reading intentions...</p>
+<p>Suspicion: low</p>
+<p>Affection: suspiciously high...i guess</p>
+<div class="progress"><div class="bar" style="width:35%"></div></div>
+`;
+setTimeout(stage3,4000);
+}
+
+function stage3(){
+document.getElementById("main").innerHTML=`
+<h1>Evidence 📁</h1>
+<p>✔ You are still here</p>
+<p>✔ You’re participating in this website kini</p>
+<p> and youre obviously ragebaiting me but i decided to play along...smh</p>
+<p> ps i couldve read npc with the time i used to do this....bc i havent read anything unlike you...tch</p>
+<div class="progress"><div class="bar" style="width:50%"></div></div>
+`;
+setTimeout(stage4,4000);
+}
+
+function stage4(){
+document.getElementById("main").innerHTML=`
+<h1> analysing behaviour </h1>
+    <p>
+        did i reply to you?
+        </p>
+        <p>
+            yes
+            </p>
+    <p> 
+        did i make a whole WEBSITEEE 
+        </p>
+    <p>
+        also yes
+        </p>
+
+<h1>AI Analysis 🤖</h1>
+<p>Emotional attachment detected.</p>
+<p>Denial levels: high</p>
+<div class="progress"><div class="bar" style="width:70%"></div></div>
+`;
+setTimeout(stage5,4000);
+}
+
+function stage5(){
+document.getElementById("main").innerHTML=`
+<h1>Countdown ⏳</h1>
+<h2>3</h2>
+`;
+
+let c=3;
+let t=setInterval(()=>{
+document.querySelector("h2").innerText=c;
+c--;
+if(c<0){clearInterval(t);finalStage();}
+},1000);
+}
+
+/* ================= FINAL AGREEMENT ================= */
+
+function finalStage(){
+
+document.getElementById("main").innerHTML=`
+<h1> you drama king</h1>
+<p> why would you think i hate you...you were def ragbaiting...and i fell victim</p>
+<p> btw is this enough proof that i dont hate you?..or youre still unconvinced</p>
+
+<h3>You owe me 💌.....i spend like 2 hrs on this</h3>
+<p>Do you agree?</p>
+
+<div style="position:relative;height:120px;">
+
+<button onclick="agreed()" style="background:#7b1e3a;color:white;position:absolute;left:30px;">Yes 🤭</button>
+
+<button id="noBtn2" style="background:#ff8eb5;color:white;position:absolute;left:170px;">No 😒</button>
+
+</div>
+
+`;
+
+const no=document.getElementById("noBtn2");
+
+function moveNo(){
+no.style.left=Math.random()*200+"px";
+no.style.top=Math.random()*80+"px";
+}
+
+no.addEventListener("mouseover",moveNo);
+no.addEventListener("touchstart",(e)=>{e.preventDefault();moveNo();});
+}
+
+/* ================= AGREED ================= */
+
+function agreed(){
+document.getElementById("main").innerHTML=`
+<h1>🏆 Agreement Locked</h1>
+<p>No take-backs 😌</p>
+
+<button onclick="jokePage()" style="background:#7b1e3a;color:white;">Continue</button>
+`;
+}
+
+/* ================= JOKE PAGE ================= */
+
+function jokePage(){
+document.getElementById("main").innerHTML=`
+<h1>Quick question </h1>
+<p>Why was 6 scared of 7?</p>
+
+<input id="answer" placeholder="type answer...">
+
+<button onclick="checkAnswer()" style="background:#7b1e3a;color:white;margin-top:10px;">Submit</button>
+
+<p id="result" style="margin-top:10px;"></p>
+`;
+}
+
+function checkAnswer(){
+
+const a=document.getElementById("answer").value.toLowerCase();
+const r=document.getElementById("result");
+
+if(a.includes("7 ate 9") || a.includes("because seven ate nine")){
+r.innerHTML=`
+<h3>yes i know im hilarious...like mad..dont deny it</h3>
+<p>you’re aware… good.</p>
+<button onclick="secret()" style="margin-top:10px;">secret </button>
+`;
+}else{
+r.innerHTML=`<h3>wrong 😒</h3><p>try again in another universe.</p>`;
+}
+}
+
+/* ================= SECRET ================= */
+
+function secret(){
+document.getElementById("main").innerHTML=`
+<h1> Secret unlocked</h1>
+<p>Maybe I tolerate you more than I admit. and i genuiely dont hate you...youre aware...you were just ragebaiting </p>
+<p> oh and if it wasnt obvious before...I LIKE YOU...shocker</p>
+<p>and i decided to build you a websiteee...yay
+</p><p>Don’t get used to it.</p>
+<p> this thing crashed like 8 times fyi</p> 
+<p class="small">certified non-hater status: confirmed...meaning i dont hate you...why would i???</p>
+`;
+}
+
+</script>
+
+</body>
+</html>
